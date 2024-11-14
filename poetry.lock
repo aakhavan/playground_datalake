@@ -2,17 +2,17 @@
 
 [[package]]
 name = "boto3"
-version = "1.35.54"
+version = "1.35.61"
 description = "The AWS SDK for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "boto3-1.35.54-py3-none-any.whl", hash = "sha256:2d5e160b614db55fbee7981001c54476cb827c441cef65b2fcb2c52a62019909"},
-    {file = "boto3-1.35.54.tar.gz", hash = "sha256:7d9c359bbbc858a60b51c86328db813353c8bd1940212cdbd0a7da835291c2e1"},
+    {file = "boto3-1.35.61-py3-none-any.whl", hash = "sha256:b86ddb1bb903fd0cd8fe69dc73ec2d317133f6731e90c0781f23398025471e64"},
+    {file = "boto3-1.35.61.tar.gz", hash = "sha256:b9d3c7c65182bcb63c48ee959abbcf4ef293c1e3f7cb866a0de4684345b5a16e"},
 ]
 
 [package.dependencies]
-botocore = ">=1.35.54,<1.36.0"
+botocore = ">=1.35.61,<1.36.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.10.0,<0.11.0"
 
@@ -21,13 +21,13 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.35.54"
+version = "1.35.61"
 description = "Low-level, data-driven core of boto 3."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "botocore-1.35.54-py3-none-any.whl", hash = "sha256:9cca1811094b6cdc144c2c063a3ec2db6d7c88194b04d4277cd34fc8e3473aff"},
-    {file = "botocore-1.35.54.tar.gz", hash = "sha256:131bb59ce59c8a939b31e8e647242d70cf11d32d4529fa4dca01feea1e891a76"},
+    {file = "botocore-1.35.61-py3-none-any.whl", hash = "sha256:6bf15cb459d71e53239474bf8a47c1cda0e309b8e05cbe61561fd70cf0c4551d"},
+    {file = "botocore-1.35.61.tar.gz", hash = "sha256:f6ddaa5f5eca2829ce5ed798d1cfee99479d5d4fb6d05fc20ca918d0dbe98d8f"},
 ]
 
 [package.dependencies]
@@ -190,13 +190,13 @@ files = [
 
 [[package]]
 name = "pycoingecko"
-version = "3.1.0"
+version = "3.2.0"
 description = "Python wrapper around the CoinGecko API"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pycoingecko-3.1.0-py3-none-any.whl", hash = "sha256:5798240c0ffccfea14635b7ce42f90e49c8ba54a3cfa3e233fcc99df087485f6"},
-    {file = "pycoingecko-3.1.0.tar.gz", hash = "sha256:dcc08522c160e88bd1deb50bbab390be33dce87abb10a91ce6013d15bf859c12"},
+    {file = "pycoingecko-3.2.0-py3-none-any.whl", hash = "sha256:b4fec16e9420b3e2f1ae38ea95710b631c9809cf1bffbf0021cc6608e357925b"},
+    {file = "pycoingecko-3.2.0.tar.gz", hash = "sha256:c48935d6e608efd9a798cbc4be30f1b43176cb680503dfef8f9352e038fc7605"},
 ]
 
 [package.dependencies]
@@ -284,5 +284,5 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.12"
-content-hash = "b72be8eebf65b9166b0823b26f5af917982d4c4d5105d8f5e20378f2b7eeb166"
+python-versions = "^3.11"
+content-hash = "bba4cde2f99a7803db8225933544ecb288baf17e0f9b7ad0056a7374a3cd2d56"
