@@ -1,0 +1,61 @@
+schema: raw
+tables:
+  - name: product
+    s3_name: Product
+    fields:
+      - product_key
+      - product
+      - standard_cost
+      - color
+      - sub_category
+      - category
+      - background_format_color
+      - font_color_format
+  - name: region
+    s3_name: Region
+    fields:
+      - sales_territory_key
+      - region
+      - country
+      - country_group
+  - name: reseller
+    s3_name: Reseller
+    fields:
+      - reseller_key
+      - business_type
+      - reseller
+      - city
+      - state_province
+      - country_region
+  - name: sales
+    s3_name: Sales
+    fields:
+      - sales_order_number
+      - order_date
+      - product_key
+      - reseller_key
+      - employee_key
+      - sales_territory_key
+      - quantity
+      - unit_price
+      - sales
+      - cost
+  - name: sales_person_region
+    s3_name: SalespersonRegion
+    fields:
+      - employee_key
+      - sales_territory_key
+  - name: sales_person
+    s3_name: Salesperson
+    fields:
+      - employee_key
+      - employee_id
+      - sales_person
+      - title
+      - upn
+  - name: targets
+    s3_name: Targets
+    fields:
+      - employee_id
+      - target
+      - target_month

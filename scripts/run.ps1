@@ -52,13 +52,42 @@ try {
 
 # Start Docker Compose
 try {
-    docker-compose up -d -ErrorAction Stop
+    docker-compose up -d
     Write-Host "Docker Compose started successfully."
 } catch {
     Write-Host "Error starting Docker Compose: $_"
     exit 1
 }
 
+# Check if the AWS credentials file exists
+$awsCredentialsPath = "C:\Users\amir0\.secrets\airflow_s3_access_key.json"
+if (-Not (Test-Path $awsCredentialsPath)) {
+    Write-Host "Error: AWS credentials file not found at $awsCredentialsPath"
+    exit 1
+}
+
+# Read the AWS credentials from the file
+$awsCredentials = Get-Content -Raw -Path $awsCredentialsPath | ConvertFrom-Json
+
+# Create the AWS S3 connection in Airflow
+try {
+    $awsAccessKeyId = $awsCredentials.aws_access_key_id
+    $awsSecretAccessKey = $awsCredentials.aws_secret_access_key
+    $regionName = $awsCredentials.region_name
+
+    $connectionCommand = @"
+airflow connections add 'aws_s3_conn' \
+    --conn-type 'aws' \
+    --conn-extra '{\"aws_access_key_id\": \"$awsAccessKeyId\", \"aws_secret_access_key\": \"$awsSecretAccessKey\", \"region_name\": \"$regionName\"}'
+"@
+
+    docker exec -i airflow-webserver bash -c $connectionCommand
+    Write-Host "AWS S3 connection created successfully in Airflow."
+} catch {
+    Write-Host "Error creating AWS S3 connection in Airflow: $_"
+    exit 1
+}
+<#
 # Check if data is already loaded
 $dataLoaded = docker exec -i postgres-dwh psql -U airbnb -d airbnb -c "SELECT COUNT(*) FROM raw_listings;" | Select-String -Pattern "0 rows"
 
@@ -75,3 +104,4 @@ if ($dataLoaded) {
         exit 1
     }
 }
+#>
