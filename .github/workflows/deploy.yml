@@ -22,10 +22,24 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           sudo yum update -y
-          sudo yum install -y git python3
+          
+          
+          # Create and activate virtual environment
+          if [ ! -d "venv" ]; then
+            sudo yum install -y git python3 python3-venv
+            python3 -m venv venv
+          fi
+          source venv/bin/activate
+          
+          # Install Poetry inside the virtual environment
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
-          git clone https://github.com/aakhavan/playground_datalake.git
-          cd playground_datalake
+          
+          # Clone the repository inside the airflow/dags folder
+          mkdir -p ~/airflow/dags
+          git clone https://github.com/aakhavan/playground_datalake.git ~/airflow/dags/playground_datalake
+          
+          # Navigate to the project directory and install dependencies
+          cd ~/airflow/dags/playground_datalake
           poetry install
         EOF
