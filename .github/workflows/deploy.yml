@@ -47,4 +47,10 @@ jobs:
 
           # Upgrade Airflow database
           echo "y" | airflow db upgrade
+
+          # Restart Airflow webserver and scheduler
+          pkill -f "airflow webserver"
+          pkill -f "airflow scheduler"
+          nohup airflow webserver -p 8080 &
+          nohup airflow scheduler &
         EOF
